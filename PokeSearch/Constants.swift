@@ -8,7 +8,7 @@
 
 import Foundation
 
-public let pokemon: [String] = [
+public let pokemonList: [String] = [
     "bulbasaur",
     "ivysaur",
     "venusaur",
