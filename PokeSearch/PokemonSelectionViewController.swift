@@ -10,7 +10,7 @@ import UIKit
 
 // protocol used for sending data back
 protocol DataEnteredDelegate: class {
-    func userDidEnterPokemonSelection(pokeID: Int)
+    func userDidEnterPokemonSelection(pokemon: Pokemon)
 }
 
 class PokemonSelectionViewController: UIViewController {
@@ -19,12 +19,21 @@ class PokemonSelectionViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     weak var delegate: DataEnteredDelegate? = nil
+    var inSearchMode = false
+    var unfilterPokemon = [Pokemon]()
+    var filterPokemon = [Pokemon]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
         searchBar.delegate = self
+        
+        // Create New Pokemon List For Easier Soring
+        for index in 0..<pokemonList.count {
+            let poke = Pokemon(name: pokemonList[index], pokeID: index + 1)
+            unfilterPokemon.append(poke)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,7 +59,11 @@ extension PokemonSelectionViewController: UICollectionViewDelegateFlowLayout {
 
 extension PokemonSelectionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.userDidEnterPokemonSelection(pokeID: indexPath.row + 1)
+        if inSearchMode {
+            delegate?.userDidEnterPokemonSelection(pokemon: filterPokemon[indexPath.row])
+        } else {
+            delegate?.userDidEnterPokemonSelection(pokemon: unfilterPokemon[indexPath.row])
+        }
         dismiss(animated: true, completion: nil)
     }
 }
@@ -59,12 +72,16 @@ extension PokemonSelectionViewController: UICollectionViewDelegate {
 
 extension PokemonSelectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return pokemon.count
+        return inSearchMode ? filterPokemon.count : unfilterPokemon.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PokeCollectionViewCell", for: indexPath) as? PokemonCollectionViewCell {
-            cell.configureCell(pokeID: indexPath.row + 1, name: pokemon[indexPath.row])
+            if inSearchMode {
+                cell.configureCell(pokemon: filterPokemon[indexPath.row])
+            } else {
+                cell.configureCell(pokemon: unfilterPokemon[indexPath.row])
+            }
             return cell
         }
         return UICollectionViewCell()
@@ -74,5 +91,27 @@ extension PokemonSelectionViewController: UICollectionViewDataSource {
 // MARK: UISearchBarDelegate
 
 extension PokemonSelectionViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text == nil || searchBar.text == "" {
+            inSearchMode = false
+            collectionView.reloadData()
+            view.endEditing(true)
+        } else {
+            inSearchMode = true
+            let lower = searchBar.text!.lowercased()
+            filterPokemon = unfilterPokemon.filter({$0.name.range(of: lower) != nil})
+            for pokemon in filterPokemon {
+                print(pokemon.name)
+            }
+            collectionView.reloadData()
+        }
+    }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
+    }
 }
