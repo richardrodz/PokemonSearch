@@ -15,10 +15,10 @@ class PokeAnnotation: NSObject, MKAnnotation {
     var pokemonNumber: Int
     var pokemonName: String
     
-    init(coordinate: CLLocationCoordinate2D, pokemonNumber: Int, pokemonName: String) {
+    init(coordinate: CLLocationCoordinate2D, pokemonNumber: Int) {
         self.coordinate = coordinate
         self.pokemonNumber = pokemonNumber
-        self.pokemonName = pokemonName
+        self.pokemonName = pokemonList[pokemonNumber - 1].capitalized
         self.title = self.pokemonName
     }
     
