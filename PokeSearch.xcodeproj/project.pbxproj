@@ -17,6 +17,7 @@
 		79F187671EC5B2F200681273 /* PokemonSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F187661EC5B2F200681273 /* PokemonSelectionViewController.swift */; };
 		79F1876A1EC5BAAB00681273 /* PokemonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F187691EC5BAAB00681273 /* PokemonCollectionViewCell.swift */; };
 		79F1876C1EC5C51700681273 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1876B1EC5C51700681273 /* Pokemon.swift */; };
+		79F187701EC5EA5800681273 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1876F1EC5EA5800681273 /* Constants.swift */; };
 		C41A2B9108557BC4C54441FA /* Pods_PokeSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1C570E3EBDDF757CF3A539 /* Pods_PokeSearch.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		79F187661EC5B2F200681273 /* PokemonSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonSelectionViewController.swift; sourceTree = "<group>"; };
 		79F187691EC5BAAB00681273 /* PokemonCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonCollectionViewCell.swift; sourceTree = "<group>"; };
 		79F1876B1EC5C51700681273 /* Pokemon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
+		79F1876F1EC5EA5800681273 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7A3F3E468D1CDFE4A0282D13 /* Pods-PokeSearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeSearch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PokeSearch/Pods-PokeSearch.debug.xcconfig"; sourceTree = "<group>"; };
 		A4B221F4D64B2E4DAC389B2D /* Pods-PokeSearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeSearch.release.xcconfig"; path = "Pods/Target Support Files/Pods-PokeSearch/Pods-PokeSearch.release.xcconfig"; sourceTree = "<group>"; };
 		BE1C570E3EBDDF757CF3A539 /* Pods_PokeSearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokeSearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +91,7 @@
 			children = (
 				79F187641EC5830800681273 /* PokeAnnotation.swift */,
 				79F1876B1EC5C51700681273 /* Pokemon.swift */,
+				79F1876F1EC5EA5800681273 /* Constants.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				79F187671EC5B2F200681273 /* PokemonSelectionViewController.swift in Sources */,
 				79F187651EC5830800681273 /* PokeAnnotation.swift in Sources */,
 				79F1876A1EC5BAAB00681273 /* PokemonCollectionViewCell.swift in Sources */,
+				79F187701EC5EA5800681273 /* Constants.swift in Sources */,
 				79F187341EC4905B00681273 /* AppDelegate.swift in Sources */,
 				79F1876C1EC5C51700681273 /* Pokemon.swift in Sources */,
 			);

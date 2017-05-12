@@ -55,7 +55,8 @@ class PokemonMapViewController: UIViewController {
         let circleQuery = geoFire.query(at: location, withRadius: 2.5)
         _ = circleQuery?.observe(.keyEntered, with: { (key, location) in
             if let key = key , let location = location {
-                let anno = PokeAnnotation(coordinate: location.coordinate, pokemonNumber: Int(key)!)
+                let newKey = Int(key)!
+                let anno = PokeAnnotation(coordinate: location.coordinate, pokemonNumber: newKey, pokemonName: pokemon[newKey - 1].capitalized)
                 self.mapView.addAnnotation(anno)
             }
 
