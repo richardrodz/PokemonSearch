@@ -13,8 +13,8 @@ class PokemonCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var thumbImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
 
-    func configureCell(pokeID: Int, name: String) {
-        thumbImageView.image = UIImage(named: "\(pokeID)")
-        nameLabel.text = name
+    func configureCell(pokemon: Pokemon) {
+        thumbImageView.image = UIImage(named: "\(pokemon.pokeID)")
+        nameLabel.text = pokemon.name.capitalized
     }
 }
