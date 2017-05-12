@@ -55,8 +55,7 @@ class PokemonMapViewController: UIViewController {
         let circleQuery = geoFire.query(at: location, withRadius: 2.5)
         _ = circleQuery?.observe(.keyEntered, with: { (key, location) in
             if let key = key , let location = location {
-                let newKey = Int(key)!
-                let anno = PokeAnnotation(coordinate: location.coordinate, pokemonNumber: newKey, pokemonName: pokemon[newKey - 1].capitalized)
+                let anno = PokeAnnotation(coordinate: location.coordinate, pokemonNumber: Int(key)!)
                 self.mapView.addAnnotation(anno)
             }
 
@@ -64,11 +63,6 @@ class PokemonMapViewController: UIViewController {
         })
     }
     
-    @IBAction func spotRandomPokemon(_ sender: Any) {
-        let loc = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
-        let arc = arc4random_uniform(151) + 1
-        createSighting(forLocation: loc, withPokemon: Int(arc))
-    }
 
     @IBAction func spotPokemon(_ sender: Any) {
         performSegue(withIdentifier: "PokemonSelectionSegue", sender: nil)
@@ -153,8 +147,8 @@ extension PokemonMapViewController: CLLocationManagerDelegate {
 }
 
 extension PokemonMapViewController: DataEnteredDelegate {
-    func userDidEnterPokemonSelection(pokeID: Int) {
+    func userDidEnterPokemonSelection(pokemon: Pokemon) {
         let loc = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
-        createSighting(forLocation: loc, withPokemon: pokeID)
+        createSighting(forLocation: loc, withPokemon: pokemon.pokeID)
     }
 }
