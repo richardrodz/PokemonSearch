@@ -29,7 +29,7 @@ class PokemonSelectionViewController: UIViewController {
         collectionView.dataSource = self
         searchBar.delegate = self
         
-        // Create New Pokemon List For Easier Soring
+        // Create New Pokemon List For Easier Sorting
         for index in 0..<pokemonList.count {
             let poke = Pokemon(name: pokemonList[index], pokeID: index + 1)
             unfilterPokemon.append(poke)

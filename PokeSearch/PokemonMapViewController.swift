@@ -97,7 +97,7 @@ extension PokemonMapViewController: MKMapViewDelegate {
         var annotationView: MKAnnotationView?
         let annoIdentifier = "Pokemon"
         
-        if annotation.isKind(of: MKAnnotation.self) {
+        if annotation.isKind(of: MKUserLocation.self) {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "User")
             annotationView?.image = UIImage(named: "ash")
         } else if let deqAnno = mapView.dequeueReusableAnnotationView(withIdentifier: annoIdentifier) {
